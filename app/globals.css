@@ -19,6 +19,8 @@
   --color-shop-light-orange: #fca99b;
   --color-shop-dark-color: #151515;
   --color-shop-light-color: #52525b;
+
+  --color-shop-light-text: #686e7d;
 }
 
 @theme inline {
