@@ -9,7 +9,7 @@ function HeaderMiddle() {
   console.log(pathname);
 
   return (
-    <div className="hidden md:inline-flex w-1/3 items-center gap-7 text-sm capitalize font-semibold text-shop-light-color">
+    <div className="hidden md:inline-flex w-1/3 items-center gap-7 text-sm capitalize font-semibold text-shop-light-color justify-center">
       {headerData?.map((item) => (
         <Link
           key={item.title}
