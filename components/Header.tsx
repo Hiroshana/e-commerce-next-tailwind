@@ -4,7 +4,7 @@ import Logo from "./Logo";
 import HeaderMiddle from "./HeaderMiddle";
 import SearchBar from "./SearchBar";
 import CartIcon from "./CartIcon";
-import FavoriteButton from "./FavoriteButton";
+import FavoriteButton from "./ProductFavoriteButton";
 import SignIn from "./SignIn";
 import MobileMenu from "./MobileMenu";
 import { currentUser } from "@clerk/nextjs/server";

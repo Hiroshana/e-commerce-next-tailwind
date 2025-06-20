@@ -14,14 +14,16 @@ function ProductCard({ product }: { product: Product }) {
     <div className="text-sm border-[1px] border-shop-dark-green/20 rounded-md bg-white group">
       <div className="relative group overflow-hidden bg-gray-50/90 rounded-md">
         {product?.images && (
-          <Image
-            src={urlFor(product?.images[0]).url()}
-            alt="Product"
-            loading="lazy"
-            width={700}
-            height={700}
-            className={`w-full h-64 object-contain overflow-hidden transition-transform hoverEffect ${product?.stock !== 0 ? "group-hover:scale-105" : "opacity-50"}`}
-          />
+          <Link href={`/product/${product?.slug?.current}`}>
+            <Image
+              src={urlFor(product?.images[0]).url()}
+              alt="Product"
+              loading="lazy"
+              width={700}
+              height={700}
+              className={`w-full h-64 object-contain overflow-hidden transition-transform hoverEffect ${product?.stock !== 0 ? "group-hover:scale-105" : "opacity-50"}`}
+            />
+          </Link>
         )}
         <ProductAddWishlistButton product={product} />
         {product?.status === "sale" && (
