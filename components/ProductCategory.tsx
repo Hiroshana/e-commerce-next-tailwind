@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { client } from "@/sanity/lib/client";
 import { AnimatePresence, motion } from "motion/react";
-import { Loader, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import NoProductAvailable from "./ProductAvailableNo";
 import ProductCard from "./ProductCard";
 
