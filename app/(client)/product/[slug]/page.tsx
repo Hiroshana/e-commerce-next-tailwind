@@ -11,6 +11,7 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { RxBorderSplit } from "react-icons/rx";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { FiShare2 } from "react-icons/fi";
+import { notFound } from "next/navigation";
 
 const SingleProductPage = async ({
   params,
@@ -19,6 +20,10 @@ const SingleProductPage = async ({
 }) => {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
+
+  if (!product) {
+    return notFound();
+  }
 
   return (
     <CustomContainer className="flex flex-col md:flex-row gap-10 pb-10">

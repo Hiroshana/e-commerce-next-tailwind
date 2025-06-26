@@ -4,7 +4,7 @@ import Logo from "./Logo";
 import HeaderMiddle from "./HeaderMiddle";
 import SearchBar from "./SearchBar";
 import CartIcon from "./CartIcon";
-import FavoriteButton from "./ProductFavoriteButton";
+import ProductFavoriteButton from "./ProductFavoriteButton";
 import SignIn from "./SignIn";
 import MobileMenu from "./MobileMenu";
 import { currentUser } from "@clerk/nextjs/server";
@@ -29,7 +29,7 @@ async function Header() {
         <div className="w-auto md:w-1/3 flex items-center justify-end gap-5">
           <SearchBar />
           <CartIcon />
-          <FavoriteButton />
+          <ProductFavoriteButton />
           <ClerkLoaded>
             <SignedIn>
               <UserButton />
