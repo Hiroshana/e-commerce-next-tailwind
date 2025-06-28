@@ -28,6 +28,10 @@ import { client } from "@/sanity/lib/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import {
+  createCheckoutSessions,
+  Metadata,
+} from "@/actions/createCheckoutSession";
 
 const CartPage = () => {
   const {
@@ -80,6 +84,29 @@ const CartPage = () => {
     if (confirmed) {
       resetCart();
       toast.success("Cart reset successfully!");
+    }
+  };
+
+  const handleCheckout = async () => {
+    setLoading(true);
+
+    try {
+      const metadata: Metadata = {
+        orderNumber: crypto.randomUUID(),
+        customerName: user?.fullName ?? "Unknown",
+        customerEmail: user?.emailAddresses[0]?.emailAddress ?? "Unknown",
+        clerkUserId: user?.id,
+        address: selectedAddress,
+      };
+      const checkoutUrl = await createCheckoutSessions(groupedItems, metadata);
+      console.log(checkoutUrl);
+      if (checkoutUrl) {
+        window.location.href = checkoutUrl;
+      }
+    } catch (error) {
+      console.error("Error create checkout session:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -223,7 +250,7 @@ const CartPage = () => {
                           className="w-full rounded-md font-semibold tracking-wide hoverEffect"
                           size="lg"
                           disabled={loading}
-                          onClick={handlecheckout}
+                          onClick={handleCheckout}
                         >
                           {loading ? "Please wait..." : "Proceed to Checkout"}
                         </Button>
@@ -304,7 +331,7 @@ const CartPage = () => {
                         className="w-full rounded-md font-semibold tracking-wide hoverEffect"
                         size="lg"
                         disabled={loading}
-                        onClick={handlecheckout}
+                        onClick={handleCheckout}
                       >
                         {loading ? "Please wait..." : "Proceed to Checkout"}
                       </Button>
